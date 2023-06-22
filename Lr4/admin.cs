@@ -8,5 +8,6 @@ namespace Lr4
 {
     internal class admin
     {
+        public string aname { get; set; }
     }
 }
