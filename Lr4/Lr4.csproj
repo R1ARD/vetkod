@@ -200,6 +200,7 @@
     <Compile Include="addpetowner.xaml.cs">
       <DependentUpon>addpetowner.xaml</DependentUpon>
     </Compile>
+    <Compile Include="admin.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>

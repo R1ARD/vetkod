@@ -12,6 +12,8 @@ namespace Lr4
     {
         [Key] public int id { get; set; }
         public string oname { get; set; }
+        public string osecondname { get; set; }
+        public string ofatherdname { get; set; }
         public string phonenumber { get; set; }
         public string emailaddress { get; set; }
         public string opassword { get; set; }
