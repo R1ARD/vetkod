@@ -1,0 +1,206 @@
+﻿<Window x:Class="Lr4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lr4"
+        mc:Ignorable="d"
+        Title="Ветеринарная клиника Добро" Height="720" Width="1280" MinWidth ="300" MinHeight="100">
+    <Grid Background="#5da130">
+        <TabControl TabStripPlacement="Left">
+            <TabControl.Resources>
+                <Style TargetType="TabItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TabItem">
+                                <Grid Name="Panel">
+                                    <ContentPresenter x:Name="ContentSite"
+                                                      VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"
+                                                      ContentSource="Header"
+                                                      Margin="10 2"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="Panel" Property="Background" Value="#336600"/>
+                                        <Setter Property="Foreground" Value="White"/>
+                                        <Setter Property="FontSize" Value="25"/>
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="False">
+                                        <Setter Property="Background" Value="#5da130"/>
+                                        <Setter Property="Foreground" Value="LightGray"/>
+                                        <Setter Property="FontSize" Value="20"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TabControl.Resources>
+            <TabItem Header="Владельцы">
+                <TabItem.Content>
+                    <StackPanel>
+                        <DataGrid AutoGenerateColumns="False" Margin="10 0" x:Name="PetOwnerDataGridView" FontSize="16">
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Button Height="25" Width="25" Background="Transparent" BorderThickness="0" Click="PetOwnerEditButton_Click">
+                                                    <Image Source="/Images/edit-button.png"/>
+                                                </Button>
+                                                <Button Height="25" Width="25" Background="Transparent" BorderThickness="0" Click="PetOwnerDeleteButton_Click">
+                                                    <Image Source="/Images/remove.png" />
+                                                </Button>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn Header="Имя" Binding="{Binding Path=oname}"/>
+                                <DataGridTextColumn Header="Номер телефона" Binding="{Binding Path=phonenumber}"/>
+                                <DataGridTextColumn Header="Почта" Binding="{Binding Path=emailaddress}"/>
+                                <DataGridTextColumn Header="Адресс" Binding="{Binding Path=oaddress}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Button Height="50" HorizontalAlignment="Left" Margin="10 20" Background="Transparent" BorderThickness="0" Click="PetOwnerAddButton_Click">
+                            <Image Source="/Images/plus.png" />
+                        </Button>
+                    </StackPanel>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem Header="Питомцы" >
+                <TabItem.Content>
+                    <StackPanel>
+                        <DataGrid AutoGenerateColumns="False" Margin="10 0" x:Name="PetDataGridView" FontSize="16">
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal" >
+                                                <Button Height="25" Width="25" Background="Transparent" BorderThickness="0" Click="PetEditButton_Click">
+                                                    <Image Source="/Images/edit-button.png" />
+                                                </Button>
+                                                <Button Height="25" Width="25" Background="Transparent" BorderThickness="0" Click="PetDeleteButton_Click">
+                                                    <Image Source="/Images/remove.png" />
+                                                </Button>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn Header="Питомец" Binding="{Binding Path=pname}"/>
+                                <DataGridTextColumn Header="Вид" Binding="{Binding Path=kind}"/>
+                                <DataGridTextColumn Header="Состояние" Binding="{Binding Path=status}"/>
+                                <DataGridTextColumn Header="Владелец" Binding="{Binding Path=PetOwnerEntity.oname}"/>
+                                <DataGridTextColumn Header="Ветеринар" Binding="{Binding Path=VeterinarianEntity.vname}"/>
+                                <DataGridTextColumn Header="Болезнь" Binding="{Binding Path=DiseaseEntity.dname}"/>
+                                <DataGridTextColumn Header="Лекарство" Binding="{Binding Path=DiseaseEntity.MedecineEntity.mname}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Button Height="50" HorizontalAlignment="Left" Margin="10 20" Background="Transparent" BorderThickness="0" Click="PetAddButton_Click">
+                            <Image Source="/Images/plus.png" />
+                        </Button>
+                    </StackPanel>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem Header="Ветеринары">
+                <TabItem.Content>
+                    <StackPanel>
+                        <DataGrid AutoGenerateColumns="False" Margin="10 0" x:Name="VeterinarianDataGridView" FontSize="16">
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Button Height="25" Width="25" Background="Transparent" BorderThickness="0" Click="VeterinarianEditButton_Click">
+                                                    <Image Source="/Images/edit-button.png" />
+                                                </Button>
+                                                <Button Height="25" Width="25" Background="Transparent" BorderThickness="0" Click="VeterinarianDeleteButton_Click">
+                                                    <Image Source="/Images/remove.png" />
+                                                </Button>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn Header="Имя" Binding="{Binding Path=vname}"/>
+                                <DataGridTextColumn Header="Номер телефона" Binding="{Binding Path=phonenumber}"/>
+                                <DataGridTextColumn Header="Почта" Binding="{Binding Path=emailaddress}"/>
+                                <DataGridTextColumn Header="Адресс" Binding="{Binding Path=vaddress}"/>
+                                <DataGridTextColumn Header="Зарплата, $." Binding="{Binding Path=salary}"/>
+                                <DataGridTextColumn Header="Образование" Binding="{Binding Path=education}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Button Height="50" HorizontalAlignment="Left" Margin="10 20" Background="Transparent" BorderThickness="0" Click="VeterinarianAddButton_Click">
+                            <Image Source="/Images/plus.png" />
+                        </Button>
+                    </StackPanel>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem Header="Болезни">
+                <TabItem.Content>
+                    <StackPanel>
+                        <DataGrid AutoGenerateColumns="False" Margin="10 0" x:Name="DiseaseDataGridView" FontSize="16">
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Button Height="25" Width="25" Background="Transparent" BorderThickness="0" Click="DiseaseEditButton_Click">
+                                                    <Image Source="/Images/edit-button.png" />
+                                                </Button>
+                                                <Button Height="25" Width="25" Background="Transparent" BorderThickness="0" Click="DiseaseDeleteButton_Click">
+                                                    <Image Source="/Images/remove.png" />
+                                                </Button>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn Header="Название" Binding="{Binding Path=dname}"/>
+                                <DataGridTextColumn Header="Тип телефона" Binding="{Binding Path=dtype}"/>
+                                <DataGridTextColumn Header="Симптон" Binding="{Binding Path=symptom}"/>
+                                <DataGridTextColumn Header="Лекарство" Binding="{Binding Path=MedecineEntity.mname}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Button Height="50" HorizontalAlignment="Left" Margin="10 20" Background="Transparent" BorderThickness="0" Click="DiseaseAddButton_Click">
+                            <Image Source="/Images/plus.png" />
+                        </Button>
+                    </StackPanel>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem Header="Лекарства">
+                <TabItem.Content>
+                    <StackPanel>
+                        <DataGrid AutoGenerateColumns="False" Margin="10 0" x:Name="MedecineDataGridView" FontSize="16">
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Button Height="25" Width="25" Background="Transparent" BorderThickness="0" Click="MedecineEditButton_Click">
+                                                    <Image Source="/Images/edit-button.png" />
+
+                                                </Button>
+                                                <Button Height="25" Width="25" Background="Transparent" BorderThickness="0" Click="MedecineDeleteButton_Click">
+                                                     <Image Source="/Images/remove.png" />
+
+                                                </Button>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn Header="Название" Binding="{Binding Path=mname}"/>
+                                <DataGridTextColumn Header="В наличии" Binding="{Binding Path=amount}"/>
+                                <DataGridTextColumn Header="Цена" Binding="{Binding Path=price}"/>
+                                <DataGridTextColumn Header="Противопоказания" Binding="{Binding Path=contraindications}"/>
+                                <DataGridCheckBoxColumn Header="Руцептурное?" Binding="{Binding Path=isrecipe}" IsReadOnly="True"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Button Height="50" HorizontalAlignment="Left" Margin="10 20" Background="Transparent" BorderThickness="0" Click="MedecineAddButton_Click">
+                             <Image Source="/Images/plus.png" />
+
+                        </Button>
+                    </StackPanel>
+                </TabItem.Content>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
