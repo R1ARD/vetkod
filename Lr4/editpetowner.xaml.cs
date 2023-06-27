@@ -29,9 +29,12 @@ namespace Lr4
             VeterenarianComboboxView.ItemsSource = DatabaseControl.GetVeterinarianForView();
 
             PetOwnerNameView.Text = Petowner.oname;
+            PetOwnerSecondNameView.Text = Petowner.osecondname;
+            PetOwnerFatherNameView.Text = Petowner.ofathername;
+            PetOwnerGenderView.Text = Petowner.gender;
+
             PetOwnerPhoneNumberView.Text = Petowner.phonenumber;
             PetOwnerEmailView.Text = Petowner.emailaddress;
-            PetOwnerPasswordView.Text = Petowner.opassword;
             PetOwnerAddressView.Text = Petowner.oaddress;
 
             VeterenarianComboboxView.SelectedValue = Petowner.VeterinarianEntity.id;
@@ -39,15 +42,18 @@ namespace Lr4
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Validation.PersonValidation(PetOwnerNameView.Text, PetOwnerPhoneNumberView.Text, PetOwnerEmailView.Text, PetOwnerAddressView.Text))
+            if (Validation.PersonValidation(PetOwnerNameView.Text, PetOwnerSecondNameView.Text, PetOwnerFatherNameView.Text, PetOwnerGenderView.Text, PetOwnerPhoneNumberView.Text, PetOwnerEmailView.Text, PetOwnerAddressView.Text))
             {
-                if (!DatabaseControl.PetOwnerIsValid(PetOwnerEmailView.Text, PetOwnerPasswordView.Text))
+                if (!DatabaseControl.PetOwnerEmailIsValid(PetOwnerEmailView.Text))
                 {
 
                     _temppetowner.oname = PetOwnerNameView.Text;
+                    _temppetowner.osecondname = PetOwnerSecondNameView.Text;
+                    _temppetowner.ofathername = PetOwnerSecondNameView.Text;
+                    _temppetowner.gender = PetOwnerGenderView.Text;
+
                     _temppetowner.phonenumber = PetOwnerPhoneNumberView.Text;
                     _temppetowner.emailaddress = PetOwnerEmailView.Text;
-                    _temppetowner.opassword = PetOwnerPasswordView.Text;
                     _temppetowner.oaddress = PetOwnerAddressView.Text;
                     DatabaseControl.UpdatePetOwner(_temppetowner);
                     (this.Owner as MainWindow).RefreshTable();

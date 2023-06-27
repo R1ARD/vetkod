@@ -1,18 +1,19 @@
-﻿<Window x:Class="Lr4.editveterinarian"
+﻿<Window x:Class="Lr4.addveterinarian"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lr4"
         mc:Ignorable="d"
-        Title="editveterinarian" Height="550" Width="300">
-    
+        Title="addveterinarian" Height="550" Width="300">
     <Grid Background="#5da130">
         <StackPanel Orientation="Vertical" Margin="10">
-            <TextBlock HorizontalAlignment="Center" FontSize="20">Изменение ветеринара</TextBlock>
+
+            <TextBlock HorizontalAlignment="Center" FontSize="20" FontWeight="Bold">Добавление ветеринара</TextBlock>
+
 
             <TextBlock HorizontalAlignment="Left" FontSize="15">Имя</TextBlock>
-            <TextBox x:Name="VeterinarianNameView" FontSize="15"></TextBox>
+            <TextBox  x:Name="VeterinarianNameView" FontSize="15"></TextBox>
 
             <TextBlock HorizontalAlignment="Left" FontSize="15">Фамилия</TextBlock>
             <TextBox x:Name="VeterinarianSecondNameView" FontSize="15"></TextBox>
@@ -39,9 +40,10 @@
             <TextBox x:Name="VeterinarianEmailView" FontSize="15"></TextBox>
 
             <TextBlock Margin="0 10 0 0" HorizontalAlignment="Left" FontSize="15">Пароль</TextBlock>
-            <TextBox x:Name="VeterinarianPasswordView" FontSize="15" ></TextBox>
+            <PasswordBox x:Name="VeterinarianPasswordView" FontSize="15" ></PasswordBox>
 
-            <Button Margin="20" IsDefault="True" Click="EditButton_Click">Изменить</Button>
+            <Button Margin="20" IsDefault="True" Click="AddVeterinarianButton_Click">Добавить</Button>
+
         </StackPanel>
     </Grid>
 </Window>

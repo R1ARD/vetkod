@@ -27,6 +27,10 @@ namespace Lr4
             _tempVeterinarian = Veterinarian;  
 
             VeterinarianNameView.Text = Veterinarian.vname;
+            VeterinarianSecondNameView.Text = Veterinarian.vsecondname; 
+            VeterinarianFatherNameView.Text = Veterinarian.vfathername; 
+            VeterinarianGenderView.Text = Veterinarian.gender; 
+
             VeterinarianPhoneNumberView.Text = Veterinarian.phonenumber;
             VeterinarianEmailView.Text = Veterinarian.emailaddress;
             VeterinarianPasswordView.Text = Veterinarian.vpassword;
@@ -37,11 +41,15 @@ namespace Lr4
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Validation.PersonValidation(VeterinarianNameView.Text, VeterinarianPhoneNumberView.Text, VeterinarianEmailView.Text, VeterinarianAddressView.Text, Convert.ToInt32(VeterinarianSalaryView.Text), VeterinarianEducationView.Text))
+            if (Validation.PersonValidation(VeterinarianNameView.Text, VeterinarianSecondNameView.Text, VeterinarianFatherNameView.Text, VeterinarianGenderView.Text, VeterinarianPhoneNumberView.Text, VeterinarianEmailView.Text, VeterinarianAddressView.Text, Convert.ToInt32(VeterinarianSalaryView.Text), VeterinarianEducationView.Text))
             {
                 if (!DatabaseControl.VeterinarianIsValid(VeterinarianEmailView.Text, VeterinarianPasswordView.Text))
                 {
                     _tempVeterinarian.vname = VeterinarianNameView.Text;
+                    _tempVeterinarian.vsecondname = VeterinarianSecondNameView.Text;
+                    _tempVeterinarian.vfathername = VeterinarianFatherNameView.Text;
+                    _tempVeterinarian.gender = VeterinarianGenderView.Text;
+
                     _tempVeterinarian.phonenumber = VeterinarianPhoneNumberView.Text;
                     _tempVeterinarian.emailaddress = VeterinarianEmailView.Text;
                     _tempVeterinarian.vpassword = VeterinarianPasswordView.Text;

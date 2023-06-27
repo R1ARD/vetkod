@@ -5,10 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lr4"
         mc:Ignorable="d"
+        WindowState="Maximized"
         Title="Ветеринарная клиника Добро" Height="720" Width="1280" MinWidth ="300" MinHeight="100">
+    
     <Grid Background="#5da130">
         <TabControl TabStripPlacement="Left">
             <TabControl.Resources>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="#5da130"/>
+                    <Setter Property="BorderBrush" Value="White"/>
+                    <Setter Property="Margin" Value="0, 0, 10, 0" />
+                    <Setter Property="FontSize" Value="20"/>
+                </Style>
                 <Style TargetType="TabItem">
                     <Setter Property="Template">
                         <Setter.Value>
@@ -24,12 +32,12 @@
                                     <Trigger Property="IsSelected" Value="True">
                                         <Setter TargetName="Panel" Property="Background" Value="#336600"/>
                                         <Setter Property="Foreground" Value="White"/>
-                                        <Setter Property="FontSize" Value="25"/>
+                                        <Setter Property="FontSize" Value="30"/>
                                     </Trigger>
                                     <Trigger Property="IsSelected" Value="False">
                                         <Setter Property="Background" Value="#5da130"/>
                                         <Setter Property="Foreground" Value="LightGray"/>
-                                        <Setter Property="FontSize" Value="20"/>
+                                        <Setter Property="FontSize" Value="25"/>
                                     </Trigger>
                                 </ControlTemplate.Triggers>
                             </ControlTemplate>
@@ -40,6 +48,14 @@
             <TabItem Header="Владельцы">
                 <TabItem.Content>
                     <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="20">
+                            <TextBlock Foreground="Black" Margin="20 0">
+                            Поиск:
+                            </TextBlock>
+                            <TextBox x:Name="SearchPetOwner" Background="#5da130" FontSize="20" Width="350" HorizontalAlignment="Left" Margin="20 0" TextChanged="SearchPetOwnerChangedEventHandler"/>
+                        </StackPanel>
+                        
+
                         <DataGrid AutoGenerateColumns="False" Margin="10 0" x:Name="PetOwnerDataGridView" FontSize="16">
                             <DataGrid.Columns>
                                 <DataGridTemplateColumn>
@@ -57,6 +73,9 @@
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
                                 <DataGridTextColumn Header="Имя" Binding="{Binding Path=oname}"/>
+                                <DataGridTextColumn Header="Фамилия" Binding="{Binding Path=osecondname}"/>
+                                <DataGridTextColumn Header="Отчество" Binding="{Binding Path=ofathername}"/>
+                                <DataGridTextColumn Header="Гендер" Binding="{Binding Path=gender}"/>
                                 <DataGridTextColumn Header="Номер телефона" Binding="{Binding Path=phonenumber}"/>
                                 <DataGridTextColumn Header="Почта" Binding="{Binding Path=emailaddress}"/>
                                 <DataGridTextColumn Header="Адресс" Binding="{Binding Path=oaddress}"/>
@@ -122,6 +141,9 @@
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
                                 <DataGridTextColumn Header="Имя" Binding="{Binding Path=vname}"/>
+                                <DataGridTextColumn Header="Фамилия" Binding="{Binding Path=vsecondname}"/>
+                                <DataGridTextColumn Header="Отчество" Binding="{Binding Path=vfathername}"/>
+                                <DataGridTextColumn Header="Гендер" Binding="{Binding Path=gender}"/>
                                 <DataGridTextColumn Header="Номер телефона" Binding="{Binding Path=phonenumber}"/>
                                 <DataGridTextColumn Header="Почта" Binding="{Binding Path=emailaddress}"/>
                                 <DataGridTextColumn Header="Адресс" Binding="{Binding Path=vaddress}"/>

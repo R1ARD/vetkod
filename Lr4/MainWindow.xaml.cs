@@ -57,6 +57,11 @@ namespace Lr4
             MedecineDataGridView.ItemsSource = DatabaseControl.GetMedecineForView();
         }
 
+        private void SearchPetOwnerChangedEventHandler(object sender, TextChangedEventArgs args)
+        {
+            PetOwnerDataGridView.ItemsSource = DatabaseControl.SearchPetOwner(SearchPetOwner.Text);
+        } 
+
         private void PetEditButton_Click(object sender, RoutedEventArgs e)
         {
             pet p = PetDataGridView.SelectedItem as pet;
@@ -139,7 +144,7 @@ namespace Lr4
         }
         private void VeterinarianAddButton_Click(object sender, RoutedEventArgs e)
         {
-            registration win = new registration(true);
+            addveterinarian win = new addveterinarian(true);
             win.Owner = this;
             win.ShowDialog();
         }

@@ -17,11 +17,11 @@ namespace Lr4
             }
         }
 
-        public static bool PetOwnerIsValid(string enterEmail, string enterPassword)
+        public static bool PetOwnerEmailIsValid(string enterEmail)
         {
             using (DbAppContext ctx = new DbAppContext())
             {
-                return (ctx.petowner.Any(v => v.emailaddress == enterEmail)) && (ctx.veterinarian.Any(v => v.vpassword == enterPassword));
+                return (ctx.petowner.Any(v => v.emailaddress == enterEmail));
             }
         }
 
@@ -67,7 +67,17 @@ namespace Lr4
             }
         }
 
-
+        public static List<petowner> SearchPetOwner(string searcText)
+        {
+            using (DbAppContext ctx = new DbAppContext())
+            {
+                return ctx.petowner.Where(p => 
+                    p.oname.ToLower().Contains(searcText.ToLower())
+                ||  p.osecondname.ToLower().Contains(searcText.ToLower())
+                ||  p.ofathername.ToLower().Contains(searcText.ToLower()))
+                    .Include(p => p.VeterinarianEntity).ToList();
+            }
+        }
 
         public static List<petowner> GetPetOwnerForView()
         {
@@ -104,9 +114,12 @@ namespace Lr4
                 }
 
                 _petowner.oname = petowner.oname;
+                _petowner.osecondname = petowner.osecondname;
+                _petowner.ofathername = petowner.ofathername;
+                _petowner.gender = petowner.gender;
+                _petowner.oname = petowner.oname;
                 _petowner.phonenumber = petowner.phonenumber;
                 _petowner.emailaddress = petowner.emailaddress;
-                _petowner.opassword = petowner.opassword;
                 _petowner.oaddress = petowner.oaddress;
 
                 ctx.SaveChanges();
@@ -149,6 +162,9 @@ namespace Lr4
                 }
 
                 _veterinarian.vname = veterinarian.vname;
+                _veterinarian.vsecondname = veterinarian.vsecondname;
+                _veterinarian.vfathername = veterinarian.vfathername;
+                _veterinarian.gender = veterinarian.gender;
                 _veterinarian.phonenumber = veterinarian.phonenumber;
                 _veterinarian.emailaddress = veterinarian.emailaddress;
                 _veterinarian.vpassword = veterinarian.vpassword;

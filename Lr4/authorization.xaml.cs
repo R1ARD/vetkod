@@ -55,7 +55,7 @@ namespace Lr4
         }
         private void AddVeterinarianButton_Click(object sender, RoutedEventArgs e)
         {
-            registration win = new registration(false);
+            addveterinarian win = new addveterinarian(false);
             win.Show();
         }
     }

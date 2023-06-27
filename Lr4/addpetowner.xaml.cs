@@ -27,18 +27,20 @@ namespace Lr4
         }
         private void AddPetOwnerButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Validation.PersonValidation(PetOwnerNameView.Text, PetOwnerPhoneNumberView.Text, PetOwnerEmailView.Text, PetOwnerAddressView.Text))
+            if (Validation.PersonValidation(PetOwnerNameView.Text, PetOwnerSecondNameView.Text, PetOwnerFatherNameView.Text, PetOwnerGenderView.Text, PetOwnerPhoneNumberView.Text, PetOwnerEmailView.Text, PetOwnerAddressView.Text))
             {
-                if (!DatabaseControl.PetOwnerIsValid(PetOwnerEmailView.Text, PetOwnerPasswordView.Password))
+                if (!DatabaseControl.PetOwnerEmailIsValid(PetOwnerEmailView.Text))
                 {
 
                     DatabaseControl.AddPetOwner(new petowner
                     {
                         id_veterinarian = (int)VeterenarianComboboxView.SelectedValue,
                         oname = PetOwnerNameView.Text,
+                        osecondname = PetOwnerSecondNameView.Text,
+                        ofathername = PetOwnerFatherNameView.Text,
+                        gender = PetOwnerGenderView.Text,
                         phonenumber = PetOwnerPhoneNumberView.Text,
                         emailaddress = PetOwnerEmailView.Text,
-                        opassword = PetOwnerPasswordView.Password,
                         oaddress = PetOwnerAddressView.Text,
 
                     });

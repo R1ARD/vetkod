@@ -6,32 +6,6 @@
         xmlns:local="clr-namespace:Lr4"
         mc:Ignorable="d"
         Title="adddisease" Height="450" Width="300">
-    <Window.Resources>
-        <Style TargetType="TextBlock">
-            <Setter Property="Foreground" Value="White"/>
-
-        </Style>
-        <Style TargetType="TextBox">
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Background" Value="#336600"/>
-            <Setter Property="BorderThickness" Value="0"/>
-        </Style>
-        <Style TargetType="PasswordBox">
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Background" Value="#336600"/>
-            <Setter Property="BorderThickness" Value="0"/>
-        </Style>
-        <Style TargetType="Button">
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Background" Value="#336600"/>
-            <Setter Property="BorderThickness" Value="0"/>
-        </Style>
-        <Style TargetType="ComboBox">
-           
-            <Setter Property="Background" Value="#336600"/>
-            <Setter Property="BorderThickness" Value="0"/>
-        </Style>
-    </Window.Resources>
     <Grid Background="#5da130">
         <StackPanel Orientation="Vertical" Margin="10">
             <TextBlock HorizontalAlignment="Center" FontSize="20" FontWeight="Bold">Добавление болезни</TextBlock>
