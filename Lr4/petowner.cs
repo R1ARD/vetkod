@@ -15,6 +15,7 @@ namespace Lr4
         public string osecondname { get; set; }
         public string ofathername { get; set; }
         public string gender { get; set; }
+        public DateTime birthdate { get; set; }
         public string phonenumber { get; set; }
         public string emailaddress { get; set; }
         public string oaddress { get; set; }

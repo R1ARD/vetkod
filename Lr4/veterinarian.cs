@@ -15,6 +15,7 @@ namespace Lr4
         public string vsecondname { get; set; }
         public string vfathername { get; set; }
         public string gender { get; set; }
+        public DateTime birthdate { get; set; }
         public string phonenumber { get; set; }
         public string emailaddress { get; set; }
         public string vpassword { get; set; }
@@ -25,5 +26,6 @@ namespace Lr4
         public List<petowner> PetOwnerEntities { get; set; }
 
         public List<pet> PetEntities { get; set; }
+        public List<card> CardEntities { get; set; }
     }
 }

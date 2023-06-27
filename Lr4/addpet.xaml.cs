@@ -35,6 +35,7 @@ namespace Lr4
                     pname = petNameView.Text,
                     kind = kindNameView.Text,
                     status = statusNameView.Text,
+                    birthdate = DateTime.SpecifyKind(Convert.ToDateTime(BirthdateView.SelectedDate.Value), DateTimeKind.Utc),
                     id_owner = (int)PetOwnerComboboxView.SelectedValue,
                     id_veterinarian = (int)VeterenarianComboboxView.SelectedValue,
                     id_disease = (int)DiseaseComboboxView.SelectedValue

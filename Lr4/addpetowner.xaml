@@ -22,6 +22,9 @@
             <TextBlock HorizontalAlignment="Left" FontSize="15">Гендер</TextBlock>
             <TextBox x:Name="PetOwnerGenderView" FontSize="15"></TextBox>
 
+            <TextBlock Margin="0" HorizontalAlignment="Left" FontSize="15">Дата Рождения</TextBlock>
+            <DatePicker HorizontalAlignment="Left" x:Name="BirthdateView" Width="100" BorderBrush="#046380"></DatePicker>
+
             <TextBlock HorizontalAlignment="Left" FontSize="15">Номер телефона</TextBlock>
             <TextBox x:Name="PetOwnerPhoneNumberView" FontSize="15"></TextBox>
 

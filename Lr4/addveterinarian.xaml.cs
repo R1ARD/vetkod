@@ -31,7 +31,7 @@ namespace Lr4
         private void AddVeterinarianButton_Click(object sender, RoutedEventArgs e)
         {
 
-            if (Validation.PersonValidation(VeterinarianNameView.Text, VeterinarianSecondNameView.Text, VeterinarianFatherNameView.Text, VeterinarianGenderView.Text, VeterinarianPhoneNumberView.Text, VeterinarianEmailView.Text, VeterinarianAddressView.Text, Convert.ToInt32(VeterinarianSalaryView.Text), VeterinarianEducationView.Text))
+            if (Validation.PersonValidation(VeterinarianNameView.Text, VeterinarianSecondNameView.Text, VeterinarianFatherNameView.Text, VeterinarianGenderView.Text, Convert.ToDateTime(BirthdateView.SelectedDate.Value), VeterinarianPhoneNumberView.Text, VeterinarianEmailView.Text, VeterinarianAddressView.Text, Convert.ToInt32(VeterinarianSalaryView.Text), VeterinarianEducationView.Text))
             {
                 if (!DatabaseControl.VeterinarianIsValid(VeterinarianEmailView.Text, VeterinarianPasswordView.Password))
                 {
@@ -42,7 +42,7 @@ namespace Lr4
                         vsecondname = VeterinarianSecondNameView.Text,
                         vfathername = VeterinarianFatherNameView.Text,
                         gender = VeterinarianGenderView.Text,
-
+                        birthdate = DateTime.SpecifyKind(Convert.ToDateTime(BirthdateView.SelectedDate.Value), DateTimeKind.Utc),
                         phonenumber = VeterinarianPhoneNumberView.Text,
                         emailaddress = VeterinarianEmailView.Text,
                         vpassword = VeterinarianPasswordView.Password,

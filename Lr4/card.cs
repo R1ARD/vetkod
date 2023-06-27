@@ -17,8 +17,11 @@ namespace Lr4
        public string comment { get; set; }
 
         [ForeignKey("PetEntity")] public int id_pet { get; set; }
+        [ForeignKey("VeterinarianEntity")] public int id_veterinarian { get; set; }
 
         [ForeignKey("id_pet")]
-        public petowner PetEntity { get; set; }
+        public pet PetEntity { get; set; }
+        [ForeignKey("id_veterinarian")]
+        public veterinarian VeterinarianEntity { get; set; }
     }
 }

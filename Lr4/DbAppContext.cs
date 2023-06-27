@@ -44,6 +44,9 @@ namespace Lr4
 
             modelBuilder.Entity<card>().HasOne(p => p.PetEntity)
                                        .WithMany(p => p.CardEntities);
+
+            modelBuilder.Entity<card>().HasOne(p => p.VeterinarianEntity)
+                                       .WithMany(p => p.CardEntities);
         }
 
     }

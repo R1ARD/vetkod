@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lr4"
         mc:Ignorable="d"
-        Title="addveterinarian" Height="550" Width="300">
+        Title="addveterinarian" Height="600" Width="300">
     <Grid Background="#5da130">
         <StackPanel Orientation="Vertical" Margin="10">
 
@@ -23,6 +23,9 @@
 
             <TextBlock HorizontalAlignment="Left" FontSize="15">Гендер</TextBlock>
             <TextBox x:Name="VeterinarianGenderView" FontSize="15"></TextBox>
+
+            <TextBlock Margin="0" HorizontalAlignment="Left" FontSize="15">Дата Рождения</TextBlock>
+            <DatePicker HorizontalAlignment="Left" x:Name="BirthdateView" Width="100" BorderBrush="#046380"></DatePicker>
 
             <TextBlock HorizontalAlignment="Left" FontSize="15">Номер телефона</TextBlock>
             <TextBox x:Name="VeterinarianPhoneNumberView" FontSize="15"></TextBox>

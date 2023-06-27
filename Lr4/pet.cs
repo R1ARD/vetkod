@@ -13,9 +13,8 @@ namespace Lr4
         [Key] public int id { get; set; }
         public string pname { get; set; }
         public string kind { get; set; }
+        public DateTime birthdate { get; set; }
         public string status { get; set; }
-
-        public List<card> CardEntities { get; set; }
 
 
         [ForeignKey("PetOwnerEntity")] public int id_owner { get; set; }
@@ -30,5 +29,8 @@ namespace Lr4
         public veterinarian VeterinarianEntity { get; set; }
         [ForeignKey("id_disease")]
         public disease DiseaseEntity { get; set; }
+
+
+        public List<card> CardEntities { get; set; }
     }
 }

@@ -39,6 +39,7 @@ namespace Lr4
                         osecondname = PetOwnerSecondNameView.Text,
                         ofathername = PetOwnerFatherNameView.Text,
                         gender = PetOwnerGenderView.Text,
+                        birthdate = DateTime.SpecifyKind(Convert.ToDateTime(BirthdateView.SelectedDate.Value), DateTimeKind.Utc),
                         phonenumber = PetOwnerPhoneNumberView.Text,
                         emailaddress = PetOwnerEmailView.Text,
                         oaddress = PetOwnerAddressView.Text,

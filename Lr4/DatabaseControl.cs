@@ -67,6 +67,49 @@ namespace Lr4
             }
         }
 
+        public static List<card> GetCardForView()
+        {
+            using (DbAppContext ctx = new DbAppContext())
+            {
+                return ctx.card.Include(p => p.PetEntity)
+                    .ThenInclude(d => d.DiseaseEntity).ThenInclude(m => m.MedecineEntity)
+                    .Include(v => v.VeterinarianEntity).ToList();
+            }
+        }
+        public static void AddCard(card card)
+        {
+            using (DbAppContext ctx = new DbAppContext())
+            {
+                ctx.card.Add(card);
+                ctx.SaveChanges();
+            }
+        }
+        public static void DelCard(card card)
+        {
+            using (DbAppContext ctx = new DbAppContext())
+            {
+                ctx.card.Remove(card);
+                ctx.SaveChanges();
+            }
+        }
+        public static void UpdateCard(card card)
+        {
+            using (DbAppContext ctx = new DbAppContext())
+            {
+                card _card = ctx.card.FirstOrDefault(c => c.id == card.id);
+
+                if (_card == null)
+                {
+                    return;
+                }
+
+                _card.comment = card.comment;
+                _card.recdate = card.recdate;
+
+                ctx.SaveChanges();
+            }
+        }
+
         public static List<petowner> SearchPetOwner(string searcText)
         {
             using (DbAppContext ctx = new DbAppContext())
