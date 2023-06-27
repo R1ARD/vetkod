@@ -14,11 +14,12 @@ namespace Lr4
         public DbSet<pet> pet { get; set; }
         public DbSet<medecine> medecine { get; set; }
         public DbSet<disease> disease { get; set; }
+        public DbSet<card> card { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseNpgsql(
-                "Host=localhost;Username=postgres;Password=22345621;Database=vetkod"); // 22345621
+                "Host=localhost;Username=postgres;Password=5556708;Database=vetkod"); // 22345621
 
         }
 
@@ -37,8 +38,12 @@ namespace Lr4
             modelBuilder.Entity<petowner>().HasOne(p => p.VeterinarianEntity)
                                         .WithMany(p => p.PetOwnerEntities);
 
+
             modelBuilder.Entity<disease>().HasOne(p => p.MedecineEntity)
                                         .WithMany(p => p.DiseaseEntities);
+
+            modelBuilder.Entity<card>().HasOne(p => p.PetEntity)
+                                       .WithMany(p => p.CardEntities);
         }
 
     }

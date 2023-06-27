@@ -15,7 +15,9 @@ namespace Lr4
         public string kind { get; set; }
         public string status { get; set; }
 
-  
+        public List<card> CardEntities { get; set; }
+
+
         [ForeignKey("PetOwnerEntity")] public int id_owner { get; set; }
 
         [ForeignKey("VeterinarianEntity")] public int id_veterinarian { get; set; }

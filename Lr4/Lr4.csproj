@@ -200,7 +200,6 @@
     <Compile Include="addpetowner.xaml.cs">
       <DependentUpon>addpetowner.xaml</DependentUpon>
     </Compile>
-    <Compile Include="admin.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -208,6 +207,7 @@
     <Compile Include="authorization.xaml.cs">
       <DependentUpon>authorization.xaml</DependentUpon>
     </Compile>
+    <Compile Include="card.cs" />
     <Compile Include="DatabaseControl.cs" />
     <Compile Include="DbAppContext.cs" />
     <Compile Include="disease.cs" />
