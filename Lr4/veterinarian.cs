@@ -26,6 +26,5 @@ namespace Lr4
         public List<petowner> PetOwnerEntities { get; set; }
 
         public List<pet> PetEntities { get; set; }
-        public List<card> CardEntities { get; set; }
     }
 }

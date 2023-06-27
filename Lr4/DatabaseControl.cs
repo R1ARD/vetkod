@@ -71,7 +71,7 @@ namespace Lr4
         {
             using (DbAppContext ctx = new DbAppContext())
             {
-                return ctx.card.Where(p => p.PetEntity.id == id).Include(d => d.PetEntity.DiseaseEntity).ThenInclude(m => m.MedecineEntity).ToList();
+                return ctx.card.Where(p => p.PetEntity.id == id).ToList();
             }
         }
         public static void AddCard(card card)
@@ -104,7 +104,6 @@ namespace Lr4
                 _card.vname = card.vname;
                 _card.oname = card.oname;
                 _card.dname = card.dname;
-                _card.mname = card.mname;
                 _card.recdate = card.recdate;
 
                 ctx.SaveChanges();
