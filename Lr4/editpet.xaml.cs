@@ -62,8 +62,9 @@ namespace Lr4
                     oname = PetOwnerComboboxView.Text,
                     vname = VeterenarianComboboxView.Text,
                     dname = DiseaseComboboxView.Text,
+                    pstatus = statusNameView.Text,
 
-                });
+            });
                 DatabaseControl.UpdatePet(_tempPet);
                 (this.Owner as MainWindow).RefreshTable();
                 this.Close();

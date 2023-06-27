@@ -18,12 +18,10 @@
         <DataGrid AutoGenerateColumns="False" Margin="0 0" x:Name="CardDataGridView" FontSize="16">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Питомец" Binding="{Binding Path=PetEntity.pname}"/>
-                <DataGridTextColumn Header="Вид" Binding="{Binding Path=PetEntity.kind}"/>
-                <DataGridTextColumn Header="Состояние" Binding="{Binding Path=PetEntity.status}"/>
-                <!--<DataGridTextColumn Header="Владелец" Binding="{Binding Path=PetEntity.PetOwnerEntity.oname}"/>
-                <DataGridTextColumn Header="Ветеринар" Binding="{Binding Path=PetEntity.VeterinarianEntity.vname}"/>
-                <DataGridTextColumn Header="Болезнь" Binding="{Binding Path=PetEntity.DiseaseEntity.dname}"/>
-                <DataGridTextColumn Header="Лекарство" Binding="{Binding Path=PetEntity.DiseaseEntity.MedecineEntity.mname}"/>-->
+                <DataGridTextColumn Header="Состояние" Binding="{Binding Path=pstatus}"/>
+                <DataGridTextColumn Header="Владелец" Binding="{Binding Path=oname}"/>
+                <DataGridTextColumn Header="Ветеринар" Binding="{Binding Path=vname}"/>
+                <DataGridTextColumn Header="Болезнь" Binding="{Binding Path=dname}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

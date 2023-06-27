@@ -17,6 +17,7 @@ namespace Lr4
         public string vname { get; set; }
         public string oname { get; set; }
         public string dname { get; set; }
+        public string pstatus { get; set; }
 
         [ForeignKey("PetEntity")] public int id_pet { get; set; }
 
