@@ -36,7 +36,7 @@
             <ComboBox  FontSize="15" x:Name="VeterenarianComboboxView" SelectedValuePath="id">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Path=vname}" />
+                        <TextBlock Style="{StaticResource ComboText}" Text="{Binding Path=vname}" />
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>

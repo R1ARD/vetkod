@@ -6,7 +6,9 @@
     <Application.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="Foreground" Value="White"/>
-
+        </Style>
+        <Style TargetType="TextBlock" x:Key="ComboText">
+            <Setter Property="Foreground" Value="#336600"/>
         </Style>
         <Style TargetType="TextBox">
             <Setter Property="Foreground" Value="White"/>
@@ -23,7 +25,7 @@
             <Setter Property="Background" Value="#336600"/>
             <Setter Property="BorderThickness" Value="0"/>
         </Style>
-        <Style TargetType="ComboBox">
+        <Style TargetType="ComboBox" >
             <Setter Property="Background" Value="#336600"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Foreground" Value="#336600"/>
