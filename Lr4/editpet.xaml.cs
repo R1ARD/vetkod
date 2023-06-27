@@ -20,6 +20,8 @@ namespace Lr4
     public partial class editpet : Window
     {
         public pet _tempPet { get; set; }
+
+        public card _tempCard { get; set; }
         public editpet(pet Pet)
         {
             InitializeComponent();
@@ -33,6 +35,7 @@ namespace Lr4
             petNameView.Text = Pet.pname;
             kindNameView.Text = Pet.kind;
             statusNameView.Text = Pet.status;
+            BirthdateView.SelectedDate = Pet.birthdate;
 
             VeterenarianComboboxView.SelectedValue = Pet.VeterinarianEntity.id;
             PetOwnerComboboxView.SelectedValue = Pet.PetOwnerEntity.id;
@@ -42,14 +45,17 @@ namespace Lr4
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-           if(Validation.PetValidation(petNameView.Text, kindNameView.Text, statusNameView.Text))
+           if(Validation.PetValidation(petNameView.Text, kindNameView.Text, Convert.ToDateTime(BirthdateView.SelectedDate.Value), statusNameView.Text))
             {
                 _tempPet.pname = petNameView.Text;
                 _tempPet.kind = kindNameView.Text;
+                _tempPet.birthdate = DateTime.SpecifyKind(Convert.ToDateTime(BirthdateView.SelectedDate.Value), DateTimeKind.Utc);
                 _tempPet.status = statusNameView.Text;
                 _tempPet.id_owner = (int)PetOwnerComboboxView.SelectedValue;
                 _tempPet.id_veterinarian = (int)VeterenarianComboboxView.SelectedValue;
                 _tempPet.id_disease = (int)DiseaseComboboxView.SelectedValue;
+
+                _tempCard.
 
                 DatabaseControl.UpdatePet(_tempPet);
                 (this.Owner as MainWindow).RefreshTable();

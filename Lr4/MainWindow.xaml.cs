@@ -98,6 +98,22 @@ namespace Lr4
                 MessageBox.Show("Выберите элемент для удаления");
             }
         }
+
+        private void PetCardButton_Click(object sender, RoutedEventArgs e)
+        {
+            pet p = PetDataGridView.SelectedItem as pet;
+
+            if (p != null)
+            {
+                showcard win = new showcard(p);
+                win.Owner = this;
+                win.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Выберите элемент для изменения");
+            }
+        }
         private void PetAddButton_Click(object sender, RoutedEventArgs e)
         {
                 addpet win = new addpet();

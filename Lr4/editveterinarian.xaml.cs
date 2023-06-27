@@ -30,6 +30,7 @@ namespace Lr4
             VeterinarianSecondNameView.Text = Veterinarian.vsecondname; 
             VeterinarianFatherNameView.Text = Veterinarian.vfathername; 
             VeterinarianGenderView.Text = Veterinarian.gender; 
+            BirthdateView.SelectedDate = Veterinarian.birthdate;
 
             VeterinarianPhoneNumberView.Text = Veterinarian.phonenumber;
             VeterinarianEmailView.Text = Veterinarian.emailaddress;
@@ -41,7 +42,7 @@ namespace Lr4
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Validation.PersonValidation(VeterinarianNameView.Text, VeterinarianSecondNameView.Text, VeterinarianFatherNameView.Text, VeterinarianGenderView.Text, VeterinarianPhoneNumberView.Text, VeterinarianEmailView.Text, VeterinarianAddressView.Text, Convert.ToInt32(VeterinarianSalaryView.Text), VeterinarianEducationView.Text))
+            if (Validation.PersonValidation(VeterinarianNameView.Text, VeterinarianSecondNameView.Text, VeterinarianFatherNameView.Text, VeterinarianGenderView.Text, Convert.ToDateTime(BirthdateView.SelectedDate.Value), VeterinarianPhoneNumberView.Text, VeterinarianEmailView.Text, VeterinarianAddressView.Text, Convert.ToInt32(VeterinarianSalaryView.Text), VeterinarianEducationView.Text))
             {
                 if (!DatabaseControl.VeterinarianIsValid(VeterinarianEmailView.Text, VeterinarianPasswordView.Text))
                 {
@@ -49,6 +50,7 @@ namespace Lr4
                     _tempVeterinarian.vsecondname = VeterinarianSecondNameView.Text;
                     _tempVeterinarian.vfathername = VeterinarianFatherNameView.Text;
                     _tempVeterinarian.gender = VeterinarianGenderView.Text;
+                    _tempVeterinarian.birthdate = DateTime.SpecifyKind(Convert.ToDateTime(BirthdateView.SelectedDate.Value), DateTimeKind.Utc);
 
                     _tempVeterinarian.phonenumber = VeterinarianPhoneNumberView.Text;
                     _tempVeterinarian.emailaddress = VeterinarianEmailView.Text;

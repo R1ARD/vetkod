@@ -102,6 +102,9 @@
                                                 <Button Height="25" Width="25" Background="Transparent" BorderThickness="0" Click="PetDeleteButton_Click">
                                                     <Image Source="/Images/remove.png" />
                                                 </Button>
+                                                <Button Height="25" Width="25" Background="Transparent" BorderThickness="0" Click="PetCardButton_Click">
+                                                    <Image Source="/Images/card.png" />
+                                                </Button>
                                             </StackPanel>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>

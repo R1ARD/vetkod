@@ -14,14 +14,15 @@ namespace Lr4
 
         public DateTime recdate { get; set; }
 
-       public string comment { get; set; }
+        public string vname { get; set; }
+        public string oname { get; set; }
+        public string dname { get; set; }
+        public string mname { get; set; }
 
         [ForeignKey("PetEntity")] public int id_pet { get; set; }
-        [ForeignKey("VeterinarianEntity")] public int id_veterinarian { get; set; }
 
         [ForeignKey("id_pet")]
         public pet PetEntity { get; set; }
-        [ForeignKey("id_veterinarian")]
-        public veterinarian VeterinarianEntity { get; set; }
+        
     }
 }

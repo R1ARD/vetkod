@@ -27,7 +27,7 @@ namespace Lr4
         }
         private void AddPetOwnerButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Validation.PersonValidation(PetOwnerNameView.Text, PetOwnerSecondNameView.Text, PetOwnerFatherNameView.Text, PetOwnerGenderView.Text, PetOwnerPhoneNumberView.Text, PetOwnerEmailView.Text, PetOwnerAddressView.Text))
+            if (Validation.PersonValidation(PetOwnerNameView.Text, PetOwnerSecondNameView.Text, PetOwnerFatherNameView.Text, PetOwnerGenderView.Text, Convert.ToDateTime(BirthdateView.SelectedDate.Value), PetOwnerPhoneNumberView.Text, PetOwnerEmailView.Text, PetOwnerAddressView.Text))
             {
                 if (!DatabaseControl.PetOwnerEmailIsValid(PetOwnerEmailView.Text))
                 {

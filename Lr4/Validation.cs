@@ -33,9 +33,9 @@ namespace Lr4
         {
             return (name != "") && (type != "") && (symptom != "");
         }
-        static public bool PetValidation(string name, string kind, string status)
+        static public bool PetValidation(string name, string kind, DateTime date, string status)
         {
-            return (name != "") && (kind != "") && (status != "");
+            return (name != "") && (kind != "") && date < DateTime.Now.Date && (status != "");
         }
     }
 }

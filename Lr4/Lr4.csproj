@@ -234,6 +234,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="showcard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="medecine.cs" />
@@ -241,6 +245,9 @@
     <Compile Include="petowner.cs" />
     <Compile Include="addveterinarian.xaml.cs">
       <DependentUpon>addveterinarian.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="showcard.xaml.cs">
+      <DependentUpon>showcard.xaml</DependentUpon>
     </Compile>
     <Compile Include="Validation.cs" />
     <Compile Include="veterinarian.cs" />

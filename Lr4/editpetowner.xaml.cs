@@ -32,6 +32,7 @@ namespace Lr4
             PetOwnerSecondNameView.Text = Petowner.osecondname;
             PetOwnerFatherNameView.Text = Petowner.ofathername;
             PetOwnerGenderView.Text = Petowner.gender;
+            BirthdateView.SelectedDate = Petowner.birthdate;
 
             PetOwnerPhoneNumberView.Text = Petowner.phonenumber;
             PetOwnerEmailView.Text = Petowner.emailaddress;
@@ -42,7 +43,7 @@ namespace Lr4
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Validation.PersonValidation(PetOwnerNameView.Text, PetOwnerSecondNameView.Text, PetOwnerFatherNameView.Text, PetOwnerGenderView.Text, PetOwnerPhoneNumberView.Text, PetOwnerEmailView.Text, PetOwnerAddressView.Text))
+            if (Validation.PersonValidation(PetOwnerNameView.Text, PetOwnerSecondNameView.Text, PetOwnerFatherNameView.Text, PetOwnerGenderView.Text, Convert.ToDateTime(BirthdateView.SelectedDate.Value), PetOwnerPhoneNumberView.Text, PetOwnerEmailView.Text, PetOwnerAddressView.Text))
             {
                 if (!DatabaseControl.PetOwnerEmailIsValid(PetOwnerEmailView.Text))
                 {
@@ -51,6 +52,7 @@ namespace Lr4
                     _temppetowner.osecondname = PetOwnerSecondNameView.Text;
                     _temppetowner.ofathername = PetOwnerSecondNameView.Text;
                     _temppetowner.gender = PetOwnerGenderView.Text;
+                    _temppetowner.birthdate = DateTime.SpecifyKind(Convert.ToDateTime(BirthdateView.SelectedDate.Value), DateTimeKind.Utc);
 
                     _temppetowner.phonenumber = PetOwnerPhoneNumberView.Text;
                     _temppetowner.emailaddress = PetOwnerEmailView.Text;

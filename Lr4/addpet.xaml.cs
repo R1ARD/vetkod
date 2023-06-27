@@ -28,7 +28,7 @@ namespace Lr4
         }
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            if(Validation.PetValidation(petNameView.Text, kindNameView.Text, statusNameView.Text))
+            if(Validation.PetValidation(petNameView.Text, kindNameView.Text, Convert.ToDateTime(BirthdateView.SelectedDate.Value), statusNameView.Text))
             {
                 DatabaseControl.AddPet(new pet
                 {

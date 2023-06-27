@@ -67,7 +67,7 @@ namespace Lr4
             }
         }
 
-        public static List<card> GetCardForView()
+        public static List<card> GetCardForView(int id)
         {
             using (DbAppContext ctx = new DbAppContext())
             {
@@ -101,7 +101,10 @@ namespace Lr4
                     return;
                 }
 
-                _card.comment = card.comment;
+                _card.vname = card.vname;
+                _card.oname = card.oname;
+                _card.dname = card.dname;
+                _card.mname = card.mname;
                 _card.recdate = card.recdate;
 
                 ctx.SaveChanges();
