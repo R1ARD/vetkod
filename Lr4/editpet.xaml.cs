@@ -45,7 +45,7 @@ namespace Lr4
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-           if(Validation.PetValidation(petNameView.Text, kindNameView.Text, Convert.ToDateTime(BirthdateView.SelectedDate.Value), statusNameView.Text))
+            if (Validation.PetValidation(petNameView.Text, kindNameView.Text, Convert.ToDateTime(BirthdateView.SelectedDate.Value), statusNameView.Text))
             {
                 _tempPet.pname = petNameView.Text;
                 _tempPet.kind = kindNameView.Text;
@@ -55,8 +55,15 @@ namespace Lr4
                 _tempPet.id_veterinarian = (int)VeterenarianComboboxView.SelectedValue;
                 _tempPet.id_disease = (int)DiseaseComboboxView.SelectedValue;
 
-                _tempCard.
+                DatabaseControl.AddCard(new card
+                {
+                    id_pet = _tempPet.id,
+                    recdate = DateTime.Now.Date,
+                    oname = PetOwnerComboboxView.Text,
+                    vname = VeterenarianComboboxView.Text,
+                    dname = DiseaseComboboxView.Text,
 
+                });
                 DatabaseControl.UpdatePet(_tempPet);
                 (this.Owner as MainWindow).RefreshTable();
                 this.Close();
