@@ -17,11 +17,23 @@
     <Grid>
         <DataGrid AutoGenerateColumns="False" Margin="0 0" x:Name="CardDataGridView" FontSize="16">
             <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Height="25" Width="25" Background="Transparent" BorderThickness="0" Click="CardDeleteButton_Click">
+                                    <Image Source="/Images/remove.png" />
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTextColumn Header="Питомец" Binding="{Binding Path=PetEntity.pname}"/>
                 <DataGridTextColumn Header="Состояние" Binding="{Binding Path=pstatus}"/>
                 <DataGridTextColumn Header="Владелец" Binding="{Binding Path=oname}"/>
                 <DataGridTextColumn Header="Ветеринар" Binding="{Binding Path=vname}"/>
                 <DataGridTextColumn Header="Болезнь" Binding="{Binding Path=dname}"/>
+                <DataGridTextColumn Header="Дата записи" Binding="{Binding Path=recdate}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

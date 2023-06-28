@@ -19,11 +19,36 @@ namespace Lr4
     /// </summary>
     public partial class showcard : Window
     {
+        public pet _tempPet { get; set; }
         public showcard(pet Pet)
         {
             InitializeComponent();
 
+            _tempPet = Pet;
+
             CardDataGridView.ItemsSource = DatabaseControl.GetCardForView(Pet.id);
+
+
+        }
+        public void RefreshTable()
+        {
+            CardDataGridView.ItemsSource = null;
+            CardDataGridView.ItemsSource = DatabaseControl.GetCardForView(_tempPet.id);
+        }
+        public void CardDeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            card c = CardDataGridView.SelectedItem as card;
+
+            if (c != null)
+            {
+                    DatabaseControl.DelCard(c);
+                    RefreshTable();
+
+            }
+            else
+            {
+                MessageBox.Show("Выберите элемент для удаления");
+            }
         }
     }
 }

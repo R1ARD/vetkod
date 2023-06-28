@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Lr4
 {
@@ -54,17 +55,16 @@ namespace Lr4
                 _tempPet.id_owner = (int)PetOwnerComboboxView.SelectedValue;
                 _tempPet.id_veterinarian = (int)VeterenarianComboboxView.SelectedValue;
                 _tempPet.id_disease = (int)DiseaseComboboxView.SelectedValue;
-
                 DatabaseControl.AddCard(new card
                 {
                     id_pet = _tempPet.id,
-                    recdate = DateTime.Now.Date,
-                    oname = PetOwnerComboboxView.Text,
-                    vname = VeterenarianComboboxView.Text,
-                    dname = DiseaseComboboxView.Text,
+                    recdate = DateTime.Now,
+                    oname = _tempPet.PetOwnerEntity.oname,
+                    vname = _tempPet.VeterinarianEntity.vname,
+                    dname = _tempPet.DiseaseEntity.dname,
                     pstatus = statusNameView.Text,
 
-            });
+                }) ;
                 DatabaseControl.UpdatePet(_tempPet);
                 (this.Owner as MainWindow).RefreshTable();
                 this.Close();

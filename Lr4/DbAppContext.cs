@@ -26,24 +26,30 @@ namespace Lr4
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<pet>().HasOne(p => p.VeterinarianEntity)
-                                        .WithMany(p => p.PetEntities);
+                                        .WithMany(p => p.PetEntities)
+                                        .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<pet>().HasOne(p => p.PetOwnerEntity)
-                                        .WithMany(p => p.PetEntities);
+                                        .WithMany(p => p.PetEntities)
+                                        .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<pet>().HasOne(p => p.DiseaseEntity)
-                                        .WithMany(p => p.PetEntities);
+                                        .WithMany(p => p.PetEntities)
+                                        .OnDelete(DeleteBehavior.Cascade);
 
             
             modelBuilder.Entity<petowner>().HasOne(p => p.VeterinarianEntity)
-                                        .WithMany(p => p.PetOwnerEntities);
+                                        .WithMany(p => p.PetOwnerEntities)
+                                        .OnDelete(DeleteBehavior.Cascade);
 
 
             modelBuilder.Entity<disease>().HasOne(p => p.MedecineEntity)
-                                        .WithMany(p => p.DiseaseEntities);
+                                        .WithMany(p => p.DiseaseEntities)
+                                        .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<card>().HasOne(p => p.PetEntity)
-                                       .WithMany(p => p.CardEntities);
+                                       .WithMany(p => p.CardEntities)
+                                       .OnDelete(DeleteBehavior.Cascade);
         }
 
     }
