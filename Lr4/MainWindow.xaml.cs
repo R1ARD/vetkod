@@ -19,9 +19,132 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace Lr4
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
+    /*
+CREATE TABLE Veterinarian  
+(
+	Id serial PRIMARY KEY,
+	vName text NOT NULL,
+	vsecondname text NOT NULL,
+	vfathername text,
+	gender text NOT NULL,
+	birthdate date NOT NULL,
+	PhoneNumber text NOT NULL,
+	EmailAddress text NOT NULL,
+	vPassword text NOT NULL,
+	vAddress text NOT NULL,
+	Salary integer NOT NULL,
+	Education text NOT NULL
+);
+INSERT INTO Veterinarian (vName, vsecondname, vfathername, gender, birthdate, PhoneNumber, EmailAddress, vPassword, vAddress, Salary, Education)
+VALUES               ('Alex', 'Alexov', 'Johnovich', 'male', '2011-11-21', '+5550000', 'biden@gmail.ru', 'zxc', 'New York', 10000, 'PHD');
+INSERT INTO Veterinarian (vName, vsecondname, vfathername, gender, birthdate, PhoneNumber, EmailAddress, vPassword, vAddress, Salary, Education)
+VALUES               ('John', 'Geog', 'Hoseyavitch', 'apach', '2001-11-12', '+6660000', 'obama@gmail.ru', 'abc', 'Las Vegas', 20000, 'PTY');
+INSERT INTO Veterinarian (vName, vsecondname, vfathername, gender, birthdate, PhoneNumber, EmailAddress, vPassword, vAddress, Salary, Education)
+VALUES               ('Barby', 'Gosling', 'Ryanovna', 'female', '2011-10-17', '+8880000', 'trump@gmail.ru', 'qwerty', 'Iowa', 30000, 'FPD');
+INSERT INTO Veterinarian (vName, vsecondname, vfathername, gender, birthdate, PhoneNumber, EmailAddress, vPassword, vAddress, Salary, Education)
+VALUES               ('Test', 'Testow', 'Testovich', 'androgin', '2001-09-11', '+8880000', 'e@m', '123', 'TestBox', 2280000, 'XYZ');
+
+CREATE TABLE PetOwner  
+(
+	Id serial PRIMARY KEY,
+	oName text NOT NULL,
+	osecondname text NOT NULL,
+	ofathername text,
+	gender text NOT NULL,
+	birthdate date NOT NULL,
+	PhoneNumber text NOT NULL,
+	EmailAddress text NOT NULL,
+	oAddress text NOT NULL,
+	
+	id_veterinarian INT NOT NULL,
+	FOREIGN KEY (id_veterinarian) REFERENCES Veterinarian(Id) ON DELETE CASCADE
+);
+INSERT INTO PetOwner (oName, osecondname, ofathername, gender, birthdate, PhoneNumber, EmailAddress,  oAddress, id_veterinarian)
+VALUES               ('Ivan', 'Ivanovitch', 'Ivanov', 'male', '2011-11-11', '+79000000000', 'slava@kpss.ru',  'Moscow', 1);
+INSERT INTO PetOwner (oName, osecondname, ofathername, gender, birthdate, PhoneNumber, EmailAddress,  oAddress, id_veterinarian)
+VALUES               ('Dmitri', 'Cyber', 'Antonovich', 'male', '2011-10-11', '+78000000000', 'ded@doest.ru',  'Yekaterinburg', 1);
+INSERT INTO PetOwner (oName, osecondname, ofathername, gender, birthdate, PhoneNumber, EmailAddress,  oAddress, id_veterinarian)
+VALUES               ('Semen', 'Hromtsov', 'Yourevich', 'male', '2011-08-30', '+75000000000', 'dia@bet.su',  'Sisert', 2);
+INSERT INTO PetOwner (oName, osecondname, ofathername, gender, birthdate, PhoneNumber, EmailAddress,  oAddress, id_veterinarian)
+VALUES               ('Kirill', 'Kodolov', 'Ovegovich', 'male', '2011-11-28', '+74000000000', 'kir@hines.ru', 'Yekaterinburg', 3);
+
+
+CREATE TABLE Medecine  
+(
+	Id serial PRIMARY KEY,
+	mName text NOT NULL,
+	Amount integer NOT NULL,
+	Price decimal NOT NULL,
+	Contraindications text,
+	IsRecipe bool NOT NULL
+);
+
+INSERT INTO Medecine (mName, Amount, Price,  Contraindications, IsRecipe)
+VALUES               ('Holy water', 666, 999.99, 'Ateism', False);
+INSERT INTO Medecine (mName, Amount, Price,  Contraindications, IsRecipe)
+VALUES               ('Asperin', 100, 9.99, 'Pregnancy', True );
+INSERT INTO Medecine (mName, Amount, Price,  Contraindications, IsRecipe)
+VALUES               ('Thermopsis', 100000, 1.99, 'Pregnancy', False );
+
+CREATE TABLE Disease  
+(
+	Id serial PRIMARY KEY,
+	dName text NOT NULL,
+	dType text NOT NULL,
+	Symptom text NOT NULL,
+	
+	id_medecine INT NOT NULL,
+	FOREIGN KEY (id_medecine) REFERENCES Medecine(Id) ON DELETE CASCADE
+);
+INSERT INTO Disease (dName, dType, Symptom,   id_medecine)
+VALUES               ('Rabies', 'Virus', 'hydrophobia', 1);
+INSERT INTO Disease (dName, dType, Symptom,   id_medecine)
+VALUES               ('Chlamydia', 'STD', 'hydrophobia', 2);
+INSERT INTO Disease (dName, dType, Symptom,   id_medecine)
+VALUES               ('Zombie', 'Virus', 'Anger', 3);
+
+CREATE TABLE Pet  
+(
+	Id serial PRIMARY KEY,
+	pName text NOT NULL,
+	Kind text NOT NULL,
+	birthdate date NOT NULL,
+	Status text NOT NULL,
+	
+	id_owner INT NOT NULL,
+	id_veterinarian INT NOT NULL,
+	id_disease INT,
+	FOREIGN KEY (id_owner) REFERENCES PetOwner(Id) ON DELETE CASCADE,
+	FOREIGN KEY (id_veterinarian) REFERENCES Veterinarian(Id) ON DELETE CASCADE,
+	FOREIGN KEY (id_disease) REFERENCES Disease(Id) ON DELETE CASCADE
+);
+INSERT INTO Pet (pName, Kind, birthdate, Status,  id_owner, id_veterinarian, id_disease)
+VALUES               ('Sharik', 'Dog', '2015-10-10', 'Stable', 1, 1, 1);
+INSERT INTO Pet (pName, Kind, birthdate, Status,  id_owner, id_veterinarian, id_disease)
+VALUES               ('Murzik', 'Cat','2015-10-10', 'Serious', 1, 2, 2);
+INSERT INTO Pet (pName, Kind, birthdate, Status,  id_owner, id_veterinarian, id_disease)
+VALUES               ('Druzhok', 'Dog','2015-10-10', 'Stable', 2, 1, 2);
+INSERT INTO Pet (pName, Kind, birthdate, Status,  id_owner, id_veterinarian, id_disease)
+VALUES               ('Kesha', 'Parrot','2015-10-10', 'Stable', 3, 2, 1);
+INSERT INTO Pet (pName, Kind, birthdate, Status,  id_owner, id_veterinarian, id_disease)
+VALUES               ('Pinky', 'Rat','2015-10-10', 'Serious', 3, 1, 2);
+INSERT INTO Pet (pName, Kind, birthdate, Status,  id_owner, id_veterinarian, id_disease)
+VALUES               ('Waddles', 'Pig', '2015-10-10', 'Stable', 4, 3, 1);
+
+CREATE TABLE card  
+(
+	Id serial PRIMARY KEY,
+	recdate TIMESTAMP NOT NULL,
+	pstatus text NOT NULL,
+	vname text NOT NULL,
+	oname text NOT NULL,
+	dname text NOT NULL,
+
+	id_pet INT NOT NULL,
+	FOREIGN KEY (id_pet) REFERENCES Pet(Id) ON DELETE CASCADE
+);
+
+     */
     public partial class MainWindow : Window
     {
         string emailPattern = @"\w\@\w";
