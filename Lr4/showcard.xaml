@@ -9,6 +9,7 @@
     <Window.Resources>
         <Style TargetType="DataGridColumnHeader">
             <Setter Property="Background" Value="#5da130"/>
+            <Setter Property="Foreground" Value="White"/>
             <Setter Property="BorderBrush" Value="White"/>
             <Setter Property="Margin" Value="0, 0, 10, 0" />
             <Setter Property="FontSize" Value="20"/>

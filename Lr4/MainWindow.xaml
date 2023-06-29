@@ -7,12 +7,17 @@
         mc:Ignorable="d"
         WindowState="Maximized"
         Title="Ветеринарная клиника Добро" Height="720" Width="1280" MinWidth ="300" MinHeight="100">
-    
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+    </Window.Resources>
     <Grid Background="#5da130">
         <TabControl TabStripPlacement="Left">
             <TabControl.Resources>
                 <Style TargetType="DataGridColumnHeader">
                     <Setter Property="Background" Value="#5da130"/>
+                    <Setter Property="Foreground" Value="White"/>
                     <Setter Property="BorderBrush" Value="White"/>
                     <Setter Property="Margin" Value="0, 0, 10, 0" />
                     <Setter Property="FontSize" Value="20"/>
@@ -49,10 +54,10 @@
                 <TabItem.Content>
                     <StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="20">
-                            <TextBlock Foreground="Black" Margin="20 0">
-                            Поиск:
+                            <TextBlock FontSize="20" Foreground="Black" Margin="20 0">
+                                Поиск:
                             </TextBlock>
-                            <TextBox x:Name="SearchPetOwner" Background="#5da130" FontSize="20" Width="350" HorizontalAlignment="Left" Margin="20 0" TextChanged="SearchPetOwnerChangedEventHandler"/>
+                            <TextBox x:Name="SearchPetOwner" Background="#5da130" FontSize="16" Width="350" HorizontalAlignment="Left" Margin="20 0" TextChanged="SearchPetOwnerChangedEventHandler"/>
                         </StackPanel>
                         
 

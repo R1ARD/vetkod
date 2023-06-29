@@ -5,11 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lr4"
         mc:Ignorable="d"
-        Title="addmedecine" Height="450" Width="300">
-
+        Title="addmedecine" Height="350" Width="300">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+    </Window.Resources>
     <Grid Background="#5da130">
         <StackPanel Orientation="Vertical" Margin="10">
-            <TextBlock HorizontalAlignment="Center" FontSize="20" FontWeight="Bold">Изменение лекарства</TextBlock>
+            <TextBlock HorizontalAlignment="Center" FontSize="20" FontWeight="Bold">Добавление лекарства</TextBlock>
 
             <TextBlock HorizontalAlignment="Left" FontSize="15">Название</TextBlock>
             <TextBox x:Name="MedecineNameView" FontSize="15"></TextBox>
