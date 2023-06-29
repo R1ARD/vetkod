@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:Lr4"
         mc:Ignorable="d"
         WindowState="Maximized"
-        Title="Ветеринарная клиника Добро" Height="720" Width="1280" MinWidth ="300" MinHeight="100">
+        MinHeight="720"
+        MinWidth="1280"
+        Title="Ветеринарная клиника Добро" Height="720" Width="1280" >
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="Foreground" Value="White"/>
