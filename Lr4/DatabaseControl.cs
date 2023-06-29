@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,62 @@ namespace Lr4
             using (DbAppContext ctx = new DbAppContext())
             {
                 return (ctx.petowner.Any(v => v.emailaddress == enterEmail));
+            }
+        }
+
+
+        public static List<petowner> SearchPetOwner(string searcText)
+        {
+            using (DbAppContext ctx = new DbAppContext())
+            {
+                return ctx.petowner.Where(p =>
+                    p.oname.ToLower().Contains(searcText.ToLower())
+                || p.osecondname.ToLower().Contains(searcText.ToLower())
+                || p.ofathername.ToLower().Contains(searcText.ToLower()))
+                    .Include(p => p.VeterinarianEntity).ToList();
+            }
+        }
+
+
+        public static List<pet> SearchPet(string searcText)
+        {
+            using (DbAppContext ctx = new DbAppContext())
+            {
+                return ctx.pet.Where(p =>
+                    p.pname.ToLower().Contains(searcText.ToLower()))
+                    .Include(p => p.VeterinarianEntity)
+                    .Include(d => d.DiseaseEntity).ThenInclude(m => m.MedecineEntity).ToList(); ;
+            }
+        }
+
+
+        public static List<veterinarian> SearchVeterinarian(string searcText)
+        {
+            using (DbAppContext ctx = new DbAppContext())
+            {
+                return ctx.veterinarian.Where(v =>
+                    v.vname.ToLower().Contains(searcText.ToLower())
+                || v.vsecondname.ToLower().Contains(searcText.ToLower())
+                || v.vfathername.ToLower().Contains(searcText.ToLower())).ToList();
+            }
+        }
+
+
+        public static List<disease> SearchDisease(string searcText)
+        {
+            using (DbAppContext ctx = new DbAppContext())
+            {
+                return ctx.disease.Where(p =>
+                    p.dname.ToLower().Contains(searcText.ToLower()))
+                    .Include(p => p.MedecineEntity).ToList();
+            }
+        }
+
+        public static List<medecine> SearchMedecine(string searcText)
+        {
+            using (DbAppContext ctx = new DbAppContext())
+            {
+                return ctx.medecine.Where(p => p.mname.ToLower().Contains(searcText.ToLower())).ToList() ;
             }
         }
 
@@ -108,18 +165,6 @@ namespace Lr4
                 _card.recdate = card.recdate;
 
                 ctx.SaveChanges();
-            }
-        }
-
-        public static List<petowner> SearchPetOwner(string searcText)
-        {
-            using (DbAppContext ctx = new DbAppContext())
-            {
-                return ctx.petowner.Where(p => 
-                    p.oname.ToLower().Contains(searcText.ToLower())
-                ||  p.osecondname.ToLower().Contains(searcText.ToLower())
-                ||  p.ofathername.ToLower().Contains(searcText.ToLower()))
-                    .Include(p => p.VeterinarianEntity).ToList();
             }
         }
 

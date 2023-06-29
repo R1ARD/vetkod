@@ -60,7 +60,30 @@ namespace Lr4
         private void SearchPetOwnerChangedEventHandler(object sender, TextChangedEventArgs args)
         {
             PetOwnerDataGridView.ItemsSource = DatabaseControl.SearchPetOwner(SearchPetOwner.Text);
-        } 
+        }
+
+        private void SearchPetChangedEventHandler(object sender, TextChangedEventArgs args)
+        {
+            PetDataGridView.ItemsSource = DatabaseControl.SearchPet(SearchPet.Text);
+        }
+
+
+        private void SearchVeterinarianChangedEventHandler(object sender, TextChangedEventArgs args)
+        {
+            VeterinarianDataGridView.ItemsSource = DatabaseControl.SearchVeterinarian(SearchVeterinarian.Text);
+        }
+
+
+        private void SearchDiseaseChangedEventHandler(object sender, TextChangedEventArgs args)
+        {
+            DiseaseDataGridView.ItemsSource = DatabaseControl.SearchDisease(SearchDisease.Text);
+        }
+
+        private void SearchMedecineChangedEventHandler(object sender, TextChangedEventArgs args)
+        {
+            MedecineDataGridView.ItemsSource = DatabaseControl.SearchMedecine(SearchMedecine.Text);
+        }
+
 
         private void PetEditButton_Click(object sender, RoutedEventArgs e)
         {
