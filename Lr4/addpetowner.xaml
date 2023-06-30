@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lr4"
         mc:Ignorable="d"
+        ResizeMode="NoResize"
         Title="addpetowner" Height="600" Width="300">
     <Window.Resources>
         <Style TargetType="TextBlock">

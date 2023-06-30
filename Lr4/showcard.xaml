@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lr4"
         mc:Ignorable="d"
+        MinHeight="720"
+        MinWidth="1280"
         Title="showcard" Height="720" Width="1280">
     <Window.Resources>
         <Style TargetType="DataGridColumnHeader">
