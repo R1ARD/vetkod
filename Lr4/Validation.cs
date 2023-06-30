@@ -22,12 +22,12 @@ namespace Lr4
         static public bool PersonValidation(string name, string secondname, string fathername, string gender, DateTime date, string phoneNumber, string email, string address, int salary, string education) // veterinarian
         {
 
-            return (name != "") && (secondname != "") && (fathername != "") && (gender != "") && date < DateTime.Now.Date && (Regex.IsMatch(phoneNumber, phoneNumberPattern)) && (Regex.IsMatch(email, emailPattern))  && (address != "") && (salary > 0) && (education != "");
+            return (name != "") && (secondname != "") && (fathername != "") && (gender != "") && date < DateTime.Now.Date && date != null && (Regex.IsMatch(phoneNumber, phoneNumberPattern)) && (Regex.IsMatch(email, emailPattern))  && (address != "") && (salary > 0) && (education != "");
         }
         static public bool PersonValidation(string name, string secondname, string fathername, string gender, DateTime date, string phoneNumber, string email,  string address) // PetOwner
         {
 
-            return (name != "") && (secondname != "") && (fathername != "") && (gender != "") && date < DateTime.Now.Date && (Regex.IsMatch(phoneNumber, phoneNumberPattern)) && (Regex.IsMatch(email, emailPattern)) &&  (address != "");
+            return (name != "") && (secondname != "") && (fathername != "") && (gender != "") && date < DateTime.Now.Date && date != null && (Regex.IsMatch(phoneNumber, phoneNumberPattern)) && (Regex.IsMatch(email, emailPattern)) &&  (address != "");
         }
         static public bool DiseaseValidation (string name, string type, string symptom)
         {
@@ -35,7 +35,7 @@ namespace Lr4
         }
         static public bool PetValidation(string name, string kind, DateTime date, string status)
         {
-            return (name != "") && (kind != "") && date < DateTime.Now.Date && (status != "");
+            return (name != "") && (kind != "") && date < DateTime.Now.Date && date != null && (status != "");
         }
     }
 }
